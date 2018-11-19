@@ -34,11 +34,11 @@ if __name__=='__main__':
 
     for giver, recipient in zip(givers, recipients):
         msg = MIMEMultipart()
-        msg['From'] = 'thetataupb@gmail.com'
+        msg['From'] = host_email
         msg['To'] = giver[1]
         msg['Subject'] = "Secret Santa Match for {}".format(giver[0])
         message_body = MIMEText('Your Person is: {}\nDesired Gifts: {}'.format(recipient[0], recipient[1]))
         
         msg.attach(message_body)
-        mailServer.sendmail('thetataupb@gmail.com', giver[1], msg.as_string())
+        mailServer.sendmail(host_email, giver[1], msg.as_string())
         time.sleep(5)
